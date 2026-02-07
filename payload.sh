@@ -3,7 +3,7 @@
 # Title:  Pager_quack
 # Author: spywill
 # Description: Send QUACK command to your keycroc from wifi pineapple pager
-# Version: 1.1
+# Version: 1.2
 
 #trap 'exit 0' INT TERM
 quack_file="/mmc/root/payloads/user/remote_access/Pager_quack/Quack.txt"
@@ -143,7 +143,7 @@ esac
 
 # Sending QUACK command over SSH
 spinnerid=$(START_SPINNER "Sending QUACK command...")
-sshpass -p "$croc_passwd" ssh -o StrictHostKeyChecking=no root@$croc_ip <<EOF
+sshpass -p "$croc_passwd" ssh -o StrictHostKeyChecking=no root@$croc_ip <<EOF || true
 $( if [[ -f "$quack" ]]; then
 	cat "$quack"
 else
